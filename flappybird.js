@@ -1,7 +1,7 @@
 
 //board
 let board;
-let boardWidth = 360;
+let boardWidth = 800;
 let boardHeight = 640;
 let context;
 
@@ -30,7 +30,7 @@ let topPipeImg;
 let bottomPipeImg;
 
 //physics
-let velocityX = -2; //pipes moving left speed
+let velocityX = -5; //pipes moving left speed
 let velocityY = 0; //bird jump speed
 let gravity = 0.4;
 
@@ -61,7 +61,7 @@ window.onload = function() {
     bottomPipeImg.src = "./bottompipe.png";
 
     requestAnimationFrame(update);
-    setInterval(placePipes, 1500); //every 1.5 seconds
+    setInterval(placePipes, 800); //every 1.5 seconds
     document.addEventListener("keydown", moveBird);
 }
 
@@ -103,15 +103,17 @@ function update() {
         pipeArray.shift(); //removes first element from the array
     }
 
-    //score
-    context.fillStyle = "red";
-    context.font="45px bold";
-    context.fillText(score, 5, 100);
+    // Score
+    context.fillStyle = "white"; // Set the score text color
+    context.font = "24px bold"; // Set the score text font
+    context.fillText("Score: " + score, 10, 30); // Update the score display
 
+    // Game Over Message
     if (gameOver) {
-        context.fillText("GAME OVER", 50, 320);
+        context.fillText("GAME OVER", boardWidth / 2 - 80, boardHeight / 2); // Update the game over message
     }
 }
+
 
 function placePipes() {
     if (gameOver) {
@@ -156,6 +158,8 @@ function moveBird(e) {
             pipeArray = [];
             score = 0;
             gameOver = false;
+            gameOver = false;
+            document.getElementById("game-over").style.display = "none"; // Hide the game over message
         }
     }
 }
