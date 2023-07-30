@@ -37,6 +37,9 @@ let gravity = 0.4;
 let gameOver = false;
 let score = 0;
 
+let scoreElement; // Reference to the HTML element for the score
+let gameOverElement; // Reference to the HTML element for the game over message
+
 window.onload = function() {
     board = document.getElementById("board");
     board.height = boardHeight;
@@ -44,8 +47,8 @@ window.onload = function() {
     context = board.getContext("2d"); //used for drawing on the board
 
     //draw flappy bird
-    // context.fillStyle = "green";
-    // context.fillRect(bird.x, bird.y, bird.width, bird.height);
+    context.fillStyle = "green";
+    context.fillRect(bird.x, bird.y, bird.width, bird.height);
 
     //load images
     birdImg = new Image();
@@ -59,6 +62,9 @@ window.onload = function() {
 
     bottomPipeImg = new Image();
     bottomPipeImg.src = "./bottompipe.png";
+
+    scoreElement = document.getElementById("score");
+    gameOverElement = document.getElementById("game-over");
 
     requestAnimationFrame(update);
     setInterval(placePipes, 800); //every 1.5 seconds
@@ -97,6 +103,10 @@ function update() {
             gameOver = true;
         }
     }
+
+    // Update the text content of the score and game over message elements
+    scoreElement.textContent = "Score: " + score;
+    gameOverElement.style.display = gameOver ? "block" : "none";
 
     //clear pipes
     while (pipeArray.length > 0 && pipeArray[0].x < -pipeWidth) {
