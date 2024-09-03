@@ -25,17 +25,18 @@ body {
 }
 
 #score {
-    position: relative;
-    height: 40px;
-    width: 400px;
+    position: absolute;
+    height: 40%;
+    width: 100%;
     transform: translate(-3%, -5%); /* Center the message horizontally and vertically */
-    top: 5px; /* Adjust the vertical position of the score */
-    left: 15px; /* Adjust the horizontal position of the score */
+    top: 2px; /* Adjust the vertical position of the score */
+    left: 0px; /* Adjust the horizontal position of the score */
     font-size: 30px;
     color: white; /* You can customize the color of the score */
     z-index: 12; /* Ensure the score is above the canvas */
-    background-color: #222;
-    border-radius: 20px;
+    background-color: #e1d694;
+    
+    
     border: #222;
     font-family: 'Poppins', sans-serif;
 }

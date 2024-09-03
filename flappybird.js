@@ -30,7 +30,7 @@ let topPipeImg;
 let bottomPipeImg;
 
 //physics
-let velocityX = -5; //pipes moving left speed
+let velocityX = -6; //pipes moving left speed
 let velocityY = 0; //bird jump speed
 let gravity = 0.4;
 
@@ -113,13 +113,10 @@ function update() {
         pipeArray.shift(); //removes first element from the array
     }
 
-    // Score
-    context.fillStyle = "white"; // Set the score text color
-    context.font = "24px bold"; // Set the score text font
-    context.fillText("Score: " + score, 10, 30); // Update the score display
-
     // Game Over Message
     if (gameOver) {
+        context.fillStyle = "white"; // Set the score text color
+        context.font = "24px bold"; // Set the score text font
         context.fillText("GAME OVER", boardWidth / 2 - 80, boardHeight / 2); // Update the game over message
     }
 }
